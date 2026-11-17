@@ -35,7 +35,7 @@ npm run typecheck  # TypeScript only
 
 | File | What to edit |
 | --- | --- |
-| `src/data/profile.ts` | Name, title (`Data Engineer`), `pageTitle`, roles that type in the hero, location, email, education, languages, story, social links, nav items, and the `photo` / `cv` placeholders. |
+| `src/data/profile.ts` | Name, title (`Data Engineer`), `pageTitle`, roles that type in the hero, location, email, education, languages, story, social links, nav items, and the optional `photo` field. |
 | `src/data/projects.ts` | The 5 projects: summary, `problem` → `approach` → `result`, tags, category (`Data Engineering` / `Machine Learning`), year, `githubUrl`, metrics, and generated-art settings (`art`, `hue`). |
 | `src/data/skills.ts` | The pipeline stages (Source → Ingest → Transform → Store → Serve), the tool marquee list, and the journey/timeline entries. |
 | `src/data/tools.ts` | Every clickable tech chip: one-line purpose + official docs URL. Also holds the ticker metric explanations. |
@@ -50,9 +50,8 @@ All five `githubUrl` values live in `src/data/projects.ts` and drive the card ic
 
 Notes:
 - A project with `githubUrl: null` renders a disabled **"Repo coming soon"** button instead of a broken link.
-- Metrics containing `"TODO: add metric"` are intentional placeholders — replace them only with real numbers.
-- Set `profile.photo` to a URL or `/your-photo.jpg` in `public/` to replace the initials placeholder.
-- Set `profile.cv` to a PDF URL (or `/cv.pdf` in `public/`) to replace the CV TODO link.
+- Metrics with a `null` value are hidden in the project modal — fill them only with real numbers.
+- Set `profile.photo` to a URL or `/your-photo.jpg` in `public/` to replace the initials.
 
 ---
 
@@ -93,7 +92,7 @@ Fonts are loaded from Google Fonts in **`index.html`** and mapped in **`tailwind
 | Stat counters | In About — Projects / Years studying / Tools start counting the first time they scroll into view and always land exactly on the real number. |
 | Build your pipeline | In the Skills section — drag (or tap to select, then tap a slot) the five blocks into Source → Ingest → Transform → Store → Serve. Reset any time. |
 | Project spotlight | Hover a project card or the contact form to reveal a circuit grid under the cursor. |
-| Live ticker | Decorative demo strip under the navbar, shown over the hero. It ticks automatically and slides away as soon as you start scrolling so it never covers a heading. |
+| Live ticker | Decorative demo strip under the navbar, shown over the hero, labelled "simulated pipeline demo". It ticks automatically and slides away as soon as you start scrolling so it never covers a heading. |
 | Section wipe | Click any navbar link for a quick gradient/glitch wipe. |
 | Shared-element modal | Click a project card to expand its artwork into the detail dialog. Esc closes. |
 | Easter egg | Type `data` or enter the Konami code for a matrix-rain overlay. |
@@ -168,14 +167,13 @@ public/favicon.svg
 
 ---
 
-## 8. TODO placeholders checklist
+## 8. Before publishing checklist
 
-Before publishing, fill these in (all are clearly marked in the UI/code):
+Before publishing, fill these in (all are clearly marked in the code):
 
 - [ ] **Photo** — set `profile.photo` in `src/data/profile.ts` (initials show until then).
-- [ ] **CV / résumé** — set `profile.cv` to a PDF link.
-- [ ] **Real metrics** — every `"TODO: add metric"` in `src/data/projects.ts`.
-- [ ] **Project screenshots** — cards/modal currently use generated animated SVG art (`projectArtSvg`), plus a "TODO: add demo / screenshots" chip in each modal.
+- [ ] **Real metrics** — replace `null` metric values in `src/data/projects.ts`.
+- [ ] **Project screenshots** — cards/modal currently use generated animated SVG art (`projectArtSvg`).
 - [ ] **Open Graph image** — `og:image` / `twitter:image` in `index.html` point to a placeholder path.
 - [ ] **Canonical URL** — `index.html` canonical is `https://abosameh522.github.io/`; update to your real domain and set Vite `base` accordingly.
 - [ ] **Secondary GitHub handle** (`ahmed-s-bakr`) is stored in `src/data/profile.ts` if you want to surface it.

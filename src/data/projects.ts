@@ -3,8 +3,8 @@ import type { Project } from '../types'
 // ---------------------------------------------------------------------------
 // Projects — edit here to add/remove/reorder work.
 // `githubUrl` powers the card link, the modal buttons and the command palette.
-// Metrics are intentionally left as "TODO: add metric" — replace with real
-// numbers once you have them (never invent figures).
+// Metrics keep null values until verified numbers exist — never invent figures.
+// The modal hides any metric whose value is null.
 // ---------------------------------------------------------------------------
 export const projects: Project[] = [
   {
@@ -21,8 +21,8 @@ export const projects: Project[] = [
     art: 'pipeline',
     hue: 190,
     metrics: [
-      { label: 'Records processed', value: 'TODO: add metric' },
-      { label: 'Pipeline stages', value: 'TODO: add metric' },
+      { label: 'Records processed', value: null },
+      { label: 'Pipeline stages', value: null },
     ],
   },
   {
@@ -39,8 +39,8 @@ export const projects: Project[] = [
     art: 'churn',
     hue: 265,
     metrics: [
-      { label: 'ROC-AUC', value: 'TODO: add metric' },
-      { label: 'Models compared', value: 'TODO: add metric' },
+      { label: 'ROC-AUC', value: null },
+      { label: 'Models compared', value: null },
     ],
   },
   {
@@ -57,8 +57,8 @@ export const projects: Project[] = [
     art: 'credit',
     hue: 330,
     metrics: [
-      { label: 'Accuracy', value: 'TODO: add metric' },
-      { label: 'Features engineered', value: 'TODO: add metric' },
+      { label: 'Accuracy', value: null },
+      { label: 'Features engineered', value: null },
     ],
   },
   {
@@ -75,7 +75,7 @@ export const projects: Project[] = [
     art: 'satellite',
     hue: 150,
     metrics: [
-      { label: 'Area monitored', value: 'TODO: add metric' },
+      { label: 'Area monitored', value: null },
       { label: 'Data sources', value: '2' },
     ],
   },
@@ -93,8 +93,8 @@ export const projects: Project[] = [
     art: 'phishing',
     hue: 210,
     metrics: [
-      { label: 'F1-score', value: 'TODO: add metric' },
-      { label: 'URL features', value: 'TODO: add metric' },
+      { label: 'F1-score', value: null },
+      { label: 'URL features', value: null },
     ],
   },
 ]

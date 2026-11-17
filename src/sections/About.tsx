@@ -179,7 +179,6 @@ export function About() {
                     <div className="grid h-28 w-28 place-items-center rounded-full bg-accent-gradient font-display text-4xl font-bold text-white shadow-[0_0_60px_rgba(139,92,246,.5)]">
                       {profile.initials}
                     </div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-muted">TODO: add your photo</p>
                   </div>
                 )}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20">

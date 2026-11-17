@@ -29,10 +29,8 @@ export const profile = {
     period: '2023 – expected 2027',
   },
   languages: ['Arabic (native)', 'English'],
-  /** TODO: replace with a real professional photo when available. */
+  /** Optional photo URL; the monogram is shown when null. */
   photo: null as string | null,
-  /** TODO: add a link to your CV/RESUME PDF when available. */
-  cv: null as string | null,
   story:
     'I am a Computer Science & Artificial Intelligence student who fell in love with the moment raw, messy data turns into a clean, reliable stream you can actually reason about. I build end-to-end pipelines that extract, transform and load real-world data, then layer machine learning on top to answer the questions that matter. Big Data is my complementary track — the bigger the dataset, the more interesting the problem.',
 } as const

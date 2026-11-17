@@ -81,7 +81,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       document.removeEventListener('keydown', onKey)
       setModalOpen(false)
 
-      // Restore the exact scroll position, then resume all animations.
+      // Restore the exact scroll position, then restart all animations.
       if (lenis) {
         lenis.scrollTo(savedY.current, { immediate: true, force: true })
         lenis.start()
@@ -100,6 +100,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       document.dispatchEvent(new CustomEvent('portfolio:cursor-reset'))
     }
   }, [project, onClose, setModalOpen])
+
+  const visibleMetrics = project?.metrics.filter((metric) => Boolean(metric.value)) ?? []
 
   return (
     <AnimatePresence>
@@ -192,15 +194,17 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 ))}
               </div>
 
-              {/* metrics */}
-              <div className="mt-5 grid grid-cols-2 gap-3">
-                {project.metrics.map((metric) => (
-                  <div key={metric.label} className="rounded-xl border border-line/50 bg-surface-2/50 p-3">
-                    <div className="font-mono text-base font-semibold text-ink sm:text-lg">{metric.value}</div>
-                    <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted">{metric.label}</div>
-                  </div>
-                ))}
-              </div>
+              {/* metrics — labels with no real value yet are omitted entirely */}
+              {visibleMetrics.length > 0 && (
+                <div className="mt-5 grid grid-cols-2 gap-3">
+                  {visibleMetrics.map((metric) => (
+                    <div key={metric.label} className="rounded-xl border border-line/50 bg-surface-2/50 p-3">
+                      <div className="font-mono text-base font-semibold text-ink sm:text-lg">{metric.value}</div>
+                      <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted">{metric.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* clickable tech chips */}
               <div className="mt-5 flex flex-wrap gap-1.5">
@@ -224,9 +228,6 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 ) : (
                   <span className="font-mono text-xs text-muted">Repo coming soon</span>
                 )}
-                <span className="inline-flex items-center rounded-full border border-dashed border-line/70 px-4 py-2 font-mono text-[11px] text-muted">
-                  TODO: add demo / screenshots
-                </span>
               </div>
             </div>
           </motion.div>

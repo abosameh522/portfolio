@@ -186,15 +186,7 @@ export function Hero({ ready }: HeroProps) {
           <MagneticButton href="#work" cursorLabel="Explore">
             View my work <ArrowDown size={17} className="transition-transform group-hover:translate-y-1" />
           </MagneticButton>
-          {profile.cv ? (
-            <a href={profile.cv} target="_blank" rel="noopener noreferrer" className="font-mono text-xs uppercase tracking-widest text-muted underline decoration-line underline-offset-8 transition-colors hover:text-ink" data-cursor="CV">
-              Download CV ↗
-            </a>
-          ) : (
-            <a href={`mailto:${profile.email}?subject=CV%20request`} className="font-mono text-xs uppercase tracking-widest text-muted underline decoration-dashed decoration-line underline-offset-8 transition-colors hover:text-ink" data-cursor="CV">
-              TODO: add CV link
-            </a>
-          )}
+          {/* CV button removed until a CV file is ready */}
         </motion.div>
 
         {/* Flow rail — sets the "data moving through a pipeline" idea immediately

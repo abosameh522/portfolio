@@ -72,11 +72,14 @@ export function LiveDataTicker() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="absolute left-0 top-0 z-10 flex h-full items-center gap-1.5 bg-accent-violet px-3 font-mono text-[9px] font-bold uppercase tracking-widest text-white">
+      <div className="relative z-10 flex h-full shrink-0 items-center gap-1.5 bg-accent-violet px-2.5 font-mono text-[9px] font-bold uppercase tracking-widest text-white sm:px-3">
         <span className={`h-1.5 w-1.5 rounded-full bg-white ${reduced || paused ? '' : 'animate-pulse'}`} />
         demo
       </div>
-      <div className="w-full overflow-hidden pl-16 sm:pl-20">
+      <span className="shrink-0 whitespace-nowrap px-2 font-mono text-[8px] uppercase tracking-[0.06em] text-muted/80 sm:px-3 sm:text-[10px] sm:tracking-[0.14em]">
+        simulated pipeline demo
+      </span>
+      <div className="min-w-0 flex-1 overflow-hidden">
         <Marquee slow paused={paused}>
           {Array.from({ length: 3 }, (_, repeat) => (
             <div key={repeat} className="flex shrink-0 items-center">
@@ -113,7 +116,7 @@ export function LiveDataTicker() {
           ))}
         </Marquee>
       </div>
-      <span className="sr-only">Decorative demo statistics — simulated data, not live values.</span>
+      <span className="sr-only">Simulated pipeline demo statistics — illustrative only, not live production values.</span>
     </div>
   )
 }

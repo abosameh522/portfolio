@@ -6,7 +6,8 @@ export type ProjectCategory = 'Data Engineering' | 'Machine Learning'
 
 export interface ProjectMetric {
   label: string
-  value: string
+  /** Real value only — null hides the metric until a verified number exists. */
+  value: string | null
 }
 
 export interface Project {
@@ -30,7 +31,7 @@ export interface Project {
   art: 'pipeline' | 'churn' | 'credit' | 'satellite' | 'phishing'
   /** Accent hue used for the generated artwork + card glow. */
   hue: number
-  /** Optional metrics — use "TODO: add metric" until real numbers exist. */
+  /** Optional metrics — keep values null until a verified number exists. */
   metrics: ProjectMetric[]
 }
 
